@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='scrapy-do',
+    name='scrapy-scrapedo',
     version='0.1.3',
     url='https://github.com/scrape-do/scrapy-do',
     description='Fundemantal Scrapy support for Scrape.do API',

@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/scrapy-do
+      url: https://pypi.org/p/scrapy-scrapedo
     permissions:
       id-token: write
     steps:
