@@ -1,4 +1,4 @@
-# Scrapy-do
+# Scrapydo
 
 Scrapy wrapper for running Scrapy spiders with Scrapedo API.
 
@@ -6,10 +6,10 @@ Scrapy wrapper for running Scrapy spiders with Scrapedo API.
 
 ```bash
 # get it from github
-pip3 install git+https://github.com/scrapedo/scrapy-do
+pip3 install git+https://github.com/scrape-do/scrapy-scrapedo
 
 # or from pypi
-pip3 install scrapy-do
+pip3 install scrapy-scrapedo
 ```
 
 ## Usage
