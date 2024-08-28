@@ -12,7 +12,11 @@ class ScrapedoSampleCrawler(scrapy.Spider):
             "super":False,
             "render":True,
             "playWithBrowser":[{"Action":"Click","Selector":"#manpage > div.mp > ul > li:nth-child(3) > a"},{"Action":"Wait","Timeout":2000},{"Action":"Execute","Execute":"document.URL"}],
-        }))
+        },
+        proxy_mode=False,
+        ))
+
+        
         
     def start_requests(self):
         urls = [
@@ -26,4 +30,3 @@ class ScrapedoSampleCrawler(scrapy.Spider):
         print("target:",self.target_url(response))
         
     
-        

@@ -2,3 +2,4 @@ __pycache__
 /build
 /dist
 /scrapy_do.egg-info/
+/scrapy_scrapedo.egg-info/

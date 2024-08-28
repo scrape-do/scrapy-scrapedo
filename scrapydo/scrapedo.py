@@ -4,11 +4,13 @@ import json
 
 
 class RequestParameters:
-    def __init__(self,token:str,url:str|None=None, params:dict=None) -> None:
-        self.apiurl = "https://api.scrape.do/"
+    def __init__(self,token:str,url:str|None=None, params:dict=None,proxy_mode:bool=False) -> None:
+        self.apiurl = "api.scrape.do"
+        self.proxyurl = "proxy.scrape.do:8080"
         self.token = token
         self.url = url
         self.params = {k.lower(): v for k, v in params.items()} if params else {}
+        self.proxy_mode = proxy_mode
         assert self.token is not None and self.token != "", 'Scrape.do token is required'
         
 
@@ -22,7 +24,12 @@ class RequestParameters:
             self.params["url"] = self.url
         
         encoded_params = '&'.join(f'{urllib.parse.quote(str(k))}={urllib.parse.quote(str(v),safe="")}' for k, v in self.params.items())
-        return f'{self.apiurl}?token={self.token}&{encoded_params}'
+        return f'https://{self.apiurl}/?token={self.token}&{encoded_params}'
+    
+    def proxy(self) -> str:
+        encoded_params = '&'.join(f'{urllib.parse.quote(str(k))}={urllib.parse.quote(str(v),safe="")}' for k, v in self.params.items() if k != "url")
+        return "http://"+self.token+":"+encoded_params+"@"+self.proxyurl
+
 
     def copy(self) -> 'RequestParameters':
         return RequestParameters(
@@ -34,27 +41,19 @@ class RequestParameters:
 
 if __name__ == "__main__":
     # small unit test
-    print(RequestParameters(
+    params = RequestParameters(
         url="https://httpbin.co/",
         token="TOKEN",
         params={
-            "render":True,
             "geoCode":"us",
-            "playWithBrowser":[
-                {
-                    "Action": "Click",
-                    "Selector":"#manpage > div.mp > ul > li:nth-child(3) > a"
-                },
-                {
-                    "Action":"Wait",
-                    "Timeout":2000,
-                },{
-                    "Action":"Execute",
-                    "Execute":"document.URL",
-                }
-            ],
+            "sessionid":"123",
+            "super":True,
+            "render":True,
         },
-    ).encode())
+    )
+
+    print("api format: ",params.encode())
+    print("proxy format: ",params.proxy())
 
         
 

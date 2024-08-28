@@ -33,6 +33,19 @@ class Request(scrapy.Request):
 
         p = params.copy()
         p.params["url"] = url
-        kwargs["url"] = p.encode()
-        print(kwargs)
+
+        if not params.proxy_mode:
+            kwargs["url"] = p.encode() # encode for generating api url with auth params and url 
+        else:
+            try:
+                meta = kwargs["meta"]
+            except KeyError:
+                meta = {}
+            
+            meta["proxy"] = params.proxy()
+            kwargs["meta"] = meta
+            
         super().__init__(*args, **kwargs)
+        
+
+        
