@@ -18,9 +18,6 @@ setup(
     'Topic :: Software Development :: Libraries',
     'Topic :: Software Development :: Libraries :: Python Modules'
     'Topic :: Internet :: WWW/HTTP',
-    'Topic :: Internet :: WWW/HTTP :: WEB Crawling',
-    'Topic :: Internet :: WWW/HTTP :: WEB Scraping',
-    'Topic :: Internet :: WWW/HTTP :: Indexing/Search',
     ],
     project_urls={
         "Company": "https://scrape.do/?utm_source=pypi&utm_medium=scrapydo",
