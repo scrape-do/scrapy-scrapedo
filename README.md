@@ -27,7 +27,7 @@ class ScrapedoSampleCrawler(scrapy.Spider):
         params={
             "geoCode":"us",
             "super":False,
-            "render":True,
+            "render":True, #don't forget to delete playWithBrowser parameters if you don't want to use render feature
             "playWithBrowser":[
                 {"Action":"Click","Selector":"#manpage > div.mp > ul > li:nth-child(3) > a"},
                 {"Action":"Wait","Timeout":2000},
